@@ -33,7 +33,7 @@ document.getElementById('emailDelete').addEventListener('click', () => {
 
 const showInpuEmail = () => {
   const name = localStorage.getItem('email');
-  console.log(name);
+
   document.getElementById('emailInput').value = name;
 };
 showInpuEmail();
@@ -50,7 +50,7 @@ document.getElementById('textDelete').addEventListener('click', () => {
 
 const showInpuText = () => {
   const name = localStorage.getItem('massage');
-  console.log(name);
+
   document.getElementById('textInput').value = name;
 };
 showInpuText();
@@ -60,5 +60,20 @@ document.getElementById('rest').addEventListener('click', () => {
   localStorage.clear();
   document.getElementById('textInput').value = '';
   document.getElementById('emailInput').value = '';
-  document.getElementById('emailInput').value = '';
+  document.getElementById('nameInput').value = '';
+});
+
+// send all to localstorage
+document.getElementById('sendAll').addEventListener('click', () => {
+  const text = document.getElementById('textInput').value;
+  const email = document.getElementById('emailInput').value;
+  const name = document.getElementById('nameInput').value;
+  const data = {
+    name: name,
+    email: email,
+    massage: text,
+  };
+  const dataSt = JSON.stringify(data);
+  console.log(dataSt);
+  localStorage.setItem('data', dataSt);
 });
